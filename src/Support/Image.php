@@ -4,8 +4,8 @@ namespace Netsells\Karoway\Support;
 
 class Text extends KarowayProperty
 {
-    public function __construct($property)
+    public function __toString()
     {
-        parent::__construct($property);
+        return $this->formatAttribute($this->getValue());
     }
 }
