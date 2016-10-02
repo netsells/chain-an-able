@@ -18,9 +18,12 @@ class KarowayServiceProvider extends ServiceProvider
             __DIR__.'/karoway.php' => config_path('karoway.php'),
         ]);
 
-        // Not sure about this?
         $pageModel = config('karoway.models.page.model');
-        view()->share('karoway', (new Karoway)->setPage($pageModel::whereSlug(request()->path())->first()));
+
+        if ($pageModel) {
+            // Not sure about this?
+            view()->share('karoway', (new Karoway)->setPage($pageModel::whereSlug(request()->path())->first()));
+        }
     }
 
     /**

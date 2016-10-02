@@ -12,6 +12,7 @@ abstract class KarowayProperty
     protected $property;
 
     protected $classes = '';
+
     protected $wrapper = 'span';
 
     public function __construct($property)
@@ -21,21 +22,28 @@ abstract class KarowayProperty
         $this->value = $property->{$this->valueKey} ?? '';
     }
 
+    public function wrap($tag)
+    {
+        $this->wrapper = $tag;
+
+        return $this;
+    }
+
+    public function classes($classes)
+    {
+        $this->classes .= $classes;
+
+        return $this;
+    }
+
     protected function getValue() : string
     {
         return $this->value ?? '';
     }
 
-    public function classes($classes)
-    {
-        $this->classes += $classes;
-
-        return $this;
-    }
-
     public function getClassAttribute()
     {
-        if ($this->classes){
+        if ($this->classes) {
             return "class=\"{$this->classes}\"";
         }
 
@@ -44,7 +52,9 @@ abstract class KarowayProperty
 
     public function getWrapper()
     {
-        return "<{$this->wrapper} {$this->getClassAttribute()}>";
+        if ($this->wrapper) {
+            return "<{$this->wrapper} {$this->getClassAttribute()}>";
+        }
     }
 
     public function getClosingWrapper()
