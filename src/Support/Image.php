@@ -15,4 +15,9 @@ class Image extends KarowayProperty
     {
         return "{$this->getWrapper()}{$this->getElement()}{$this->getClosingWrapper()}";
     }
+
+    public function plain()
+    {
+        return $this->value;
+    }
 }
