@@ -33,6 +33,5 @@ return [
             'model' => Page::class,
             'relation' => 'properties',
         ]
-
     ]
 ];
