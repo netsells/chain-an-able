@@ -25,7 +25,7 @@ This is currently only compatible with Laravel 5.3 and php7.
 
 To install just require the package through composer.
 
-`composer require netsells/karoway dev-master`
+`composer require netsells/chain-an-able dev-master`
 
 publish the config file that is required to run.
 
