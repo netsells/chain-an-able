@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Providers;
+namespace Netsells\Karoway;
 
 use Illuminate\Support\ServiceProvider;
-use Karoway\Support\Karoway;
+use Netsells\Karoway\Support\Karoway;
 
 class KarowayServiceProvider extends ServiceProvider
 {

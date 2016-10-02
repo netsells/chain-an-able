@@ -8,6 +8,11 @@
             "email": "karl.roberts@netsells.co.uk"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Netsells\\Karoway\\": "src/"
+        }
+    },
     "minimum-stability": "dev",
     "require": {}
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Karoway\Support;
+namespace Netsells\Karoway\Support;
 
 class Text extends Karoway
 {
