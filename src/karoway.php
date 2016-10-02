@@ -17,9 +17,20 @@ return [
         'value_field' => 'value',
     ],
 
+    /*
+   |--------------------------------------------------------------------------
+   | Eloquent model
+   |--------------------------------------------------------------------------
+   |
+   | Here you need to specify the model you want your app to use for pages
+   | this is also where you declare what relationship returns a pages
+   | attributes.
+   |
+   */
+
     'models' => [
         'page' => [
-            'model' => \App\Karoway\Page::class,
+            'model' => Page::class,
             'relation' => 'properties',
         ]
 
