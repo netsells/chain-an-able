@@ -1,0 +1,13 @@
+{
+    "name": "netsells/karoway",
+    "description": "This package provides simple to use chainable HTML builder with easy integration into any platform or cms.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Karl Roberts",
+            "email": "karl.roberts@netsells.co.uk"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
