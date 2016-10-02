@@ -1,4 +1,4 @@
-# Karoway
+# Chain an Able
 
 [![Latest Version](https://img.shields.io/github/release/netsells/karoway.svg?style=flat-square)](https://github.com/netsells/karoway/releases)
 [![Build Status](https://img.shields.io/travis/netsells/karoway.svg?style=flat-square)](https://travis-ci.org/netsells/karoway)
@@ -25,7 +25,7 @@ This is currently only compatible with Laravel 5.3 and php7.
 
 To install just require the package through composer.
 
-`composer require netsells/karoway dev-master`
+`composer require netsells/chain-an-able dev-master`
 
 publish the config file that is required to run.
 
