@@ -5,6 +5,9 @@ namespace Netsells\Karoway\Support;
 class Karoway
 {
     protected $attributeRelationship;
+
+    protected $repeatableAttribute = false;
+
     protected $page;
 
     public function __construct()
@@ -22,12 +25,28 @@ class Karoway
 
     public function text($key)
     {
+        if ($this->repeatableAttribute) {
+            return (new Text($key));
+        }
+
         return (new Text($this->getProperty($key)));
     }
 
     public function image($key)
     {
         return (new Image($this->getProperty($key)));
+    }
+
+    public function repeatable($key)
+    {
+        return $this->getRepeatable($key);
+    }
+
+    public function setRepeatableAttribute()
+    {
+        $this->repeatableAttribute = true;
+
+        return $this;
     }
 
     private function getProperty($key)
@@ -59,6 +78,17 @@ class Karoway
     {
         return $this->page->{$this->attributeRelationship}->first(function ($property) use ($key) {
             return $property->{$this->key} == $key;
+        });
+    }
+
+    private function getRepeatable($key)
+    {
+        $repeatables = $this->page->{$this->attributeRelationship}->filter(function ($property) use ($key) {
+            return str_contains($property->{$this->key}, $key);
+        })->groupBy('repeatable_uuid');
+
+        return $repeatables->map(function($repeatable) {
+            return new Repeatable($repeatable);
         });
     }
 }
