@@ -76,19 +76,26 @@ class Karoway
 
     private function keyExists($key)
     {
-        return $this->page->{$this->attributeRelationship}->first(function ($property) use ($key) {
-            return $property->{$this->key} == $key;
-        });
+        if ($this->page) {
+            return $this->page->{$this->attributeRelationship}->first(function ($property) use ($key) {
+                return $property->{$this->key} == $key;
+            });
+        }
     }
 
     private function getRepeatable($key)
     {
-        $repeatables = $this->page->{$this->attributeRelationship}->filter(function ($property) use ($key) {
-            return str_contains($property->{$this->key}, $key);
-        })->groupBy('repeatable_uuid');
+        if ($this->page) {
+            $repeatables = $this->page->{$this->attributeRelationship}->filter(function ($property) use ($key) {
+                return str_contains($property->{$this->key}, $key);
+            })->groupBy('repeatable_uuid');
 
-        return $repeatables->map(function($repeatable) {
-            return new Repeatable($repeatable);
-        });
+            return $repeatables->map(function ($repeatable) {
+                return new Repeatable($repeatable);
+            });
+        }
+
+        // default to a collection if we don't have a page
+        return collect();
     }
 }
